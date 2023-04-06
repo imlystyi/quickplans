@@ -7,7 +7,8 @@
     
     x:Class="QuickPlans.Views.NotesCollectionPage"
     
-    Title="{x:Static resx:StringsResource.NotesCollectionPage_Title}">
+    Title="{x:Static resx:StringsResource.NotesCollectionPage_Title}"
+    BackgroundColor="{StaticResource PageBackground}">
 
     <!--#region Page BindingContext-->
     <ContentPage.BindingContext>
@@ -41,47 +42,50 @@
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                <Border StrokeShape="RoundRectangle 20" Padding="10" StrokeThickness="0">
+                    <Grid BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Entry 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Entry 
                         Text="{Binding Title}"
                         Placeholder="{x:Static resx:StringsResource.NoteTitleEntry_Placeholder}"
                         FontSize="Title"  
                         Grid.Row="0"
                         Grid.Column="0"/>
-                    
-                    <ImageButton
+
+                        <ImageButton
                         Source="delete_can_icon.svg"                               
                         HeightRequest="20"
                         WidthRequest="20"
                         Grid.Column="1"
                         Clicked="DeleteNoteButton_Clicked"/>
 
-                    <Label 
+                        <Label 
                         Text="{Binding Date}"
                         FontSize="Small"
                         TextColor="DimGray"
                         Grid.Row="1"
                         Grid.Column="0"
                         Margin="4,0,0,0"/>
-                    
-                    <Editor
+
+                        <Editor
                         Text="{Binding Text}"
                         Placeholder="{x:Static resx:StringsResource.NoteTextEditor_Placeholder}"
                         FontSize="Medium"
                         Grid.Row="2"
                         AutoSize="TextChanges"/>
-                </Grid>
+                    </Grid>
+                </Border>
+                
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

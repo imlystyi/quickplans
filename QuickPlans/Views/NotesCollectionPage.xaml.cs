@@ -38,7 +38,7 @@ public partial class NotesCollectionPage : ContentPage
     {
         ImageButton button = (ImageButton)sender;
 
-        CollectionView collectionView = (CollectionView)button.Parent.Parent;
+        CollectionView collectionView = (CollectionView)button.Parent.Parent.Parent;
 
         NotesCollection notesCollection = (NotesCollection)collectionView.BindingContext;
         Note note = (Note)button.BindingContext;

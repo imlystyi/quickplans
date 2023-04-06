@@ -58,11 +58,11 @@ public partial class ToDoTasksCollectionPage : ContentPage
     {
         Entry entry = (Entry)sender;
 
-        CollectionView innerCollectionView = (CollectionView)entry.Parent.Parent;
+        CollectionView collectionView = (CollectionView)entry.Parent.Parent;
 
-        ToDoTask toDoTaskToEdit = (ToDoTask)innerCollectionView.BindingContext;
+        ToDoTask toDoTask = (ToDoTask)collectionView.BindingContext;
 
-        toDoTaskToEdit.AddSubtask(new Subtask(entry.Text, false, DateTime.Now.ToString("yyyyMMddHHmmssfffffffK")));
+        toDoTask.AddSubtask(new Subtask(entry.Text, false, DateTime.Now.ToString("yyyyMMddHHmmssfffffffK")));
 
         entry.Text = string.Empty;
         entry.Unfocus();       
@@ -76,7 +76,7 @@ public partial class ToDoTasksCollectionPage : ContentPage
     {
         ImageButton button = (ImageButton)sender;
 
-        CollectionView collectionView = (CollectionView)button.Parent.Parent;
+        CollectionView collectionView = (CollectionView)button.Parent.Parent.Parent;
 
         ToDoTasksCollection toDoTasksCollection = (ToDoTasksCollection)collectionView.BindingContext;
         ToDoTask toDoTask = (ToDoTask)button.BindingContext;

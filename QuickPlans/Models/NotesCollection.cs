@@ -15,6 +15,7 @@ namespace QuickPlans.Models
     internal class NotesCollection
     {
         #region Properties
+
         /// <summary>
         /// Gets a notes storage.
         /// </summary>
@@ -105,6 +106,7 @@ namespace QuickPlans.Models
             Task writeAsync = AsyncIO.Write(NotesStoragePath, notesJsonString);
             await writeAsync.ConfigureAwait(false);
         }
+
         #endregion
     }
 }

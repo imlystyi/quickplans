@@ -6,6 +6,7 @@
     internal class Subtask
     {
         #region Properties
+
         /// <summary>
         /// Gets or sets the text of the subtask.
         /// </summary>
@@ -38,9 +39,11 @@
         /// The id of the subtask.
         /// </returns>
         public string Id { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssfffffffK");
+
         #endregion
 
         #region Constructors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Subtask"/> class with the default values of the properties.
         /// </summary>
@@ -60,9 +63,11 @@
             Done = done;
             Id = id;
         }
+
         #endregion
 
         #region Overridden methods
+
         public override bool Equals(object? obj) => Equals(obj as Subtask);
 
         public bool Equals(Subtask? subtaskToCompare)
@@ -79,10 +84,7 @@
         public static bool operator !=(Subtask lToDoPoint, Subtask rToDoPoint) => !(lToDoPoint == rToDoPoint);
 
         public override int GetHashCode() => Id.GetHashCode();
-        #endregion
 
-        //#region Methods of implemented interfaces
-        //public object Clone() => new Subtask(Text, Done, Id);
-        //#endregion
+        #endregion
     }
 }

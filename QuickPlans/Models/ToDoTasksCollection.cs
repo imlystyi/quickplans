@@ -106,6 +106,7 @@ namespace QuickPlans.Models
             Task writeAsync = AsyncIO.Write(ToDoTasksStoragePath, toDoTasksJsonString);
             await writeAsync.ConfigureAwait(false);
         }
+
         #endregion
     }
 }
