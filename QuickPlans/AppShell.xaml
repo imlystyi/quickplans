@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell 
+    x:Class="QuickPlans.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+    xmlns:views="clr-namespace:QuickPlans.Views"    
+    xmlns:resx="clr-namespace:QuickPlans.Resources.Strings"
+    FlyoutBehavior="Disabled"
+    BackgroundColor="White"
+    
+    x:DataType="ContentPage">
+
+    <Shell.Behaviors>
+        <mct:StatusBarBehavior x:Name="statusBarBehavior"/>
+    </Shell.Behaviors>
+    
+    <Shell.TitleColor>
+        <Color x:Name="Black"/>
+    </Shell.TitleColor>
+    
+    <TabBar>
+        <ShellContent 
+            Title="{x:Static resx:StringsResource.NotesShellContent_Text}"
+            ContentTemplate="{DataTemplate views:NotesCollectionPage}"
+            Route="NotesCollectionPage"
+            Icon="notes_icon.svg"/>
+
+        <ShellContent 
+            Title="{x:Static resx:StringsResource.ToDoTasksShellContent_Text}"
+            ContentTemplate="{DataTemplate views:ToDoTasksCollectionPage}"
+            Route="ToDoTasksCollectionPage"
+            Icon="to_do_tasks_icon.svg"/>
+    </TabBar>
+</Shell>

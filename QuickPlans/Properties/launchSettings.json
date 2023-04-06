@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Windows Machine": {
+      "commandName": "Executable",
+      "nativeDebugging": false
+    }
+  }
+}
