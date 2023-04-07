@@ -13,5 +13,11 @@ The program uses the [.NET MAUI](https://dotnet.microsoft.com/en-us/apps/maui) p
 
 ## Screenshots
 
-![light mode](https://user-images.githubusercontent.com/72669184/230605133-060a09c8-d831-4442-8092-056e1ab4ea89.png)
-![dark mode](https://user-images.githubusercontent.com/72669184/230605144-89f80ed5-9975-474c-9fe4-d80b73c4f63f.png)
+Light mode:
+
+![quickPlans-light-mode-demo](https://user-images.githubusercontent.com/72669184/230609673-a2b05e40-182d-4861-b421-4690a9c724a3.png)
+
+Dark mode:
+
+![quickPlans-dark-mode-demo](https://user-images.githubusercontent.com/72669184/230609687-d3c7ef8c-a8bd-47e9-8d9d-5c1e0f31d716.png)
+
