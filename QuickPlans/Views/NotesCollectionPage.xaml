@@ -7,8 +7,7 @@
     
     x:Class="QuickPlans.Views.NotesCollectionPage"
     
-    Title="{x:Static resx:StringsResource.NotesCollectionPage_Title}"
-    BackgroundColor="{StaticResource PageBackground}">
+    Title="{x:Static resx:StringsResource.NotesCollectionPage_Title}">
 
     <!--#region Page BindingContext-->
     <ContentPage.BindingContext>
@@ -19,11 +18,11 @@
     <!--#region ToolbarItems-->
     <ContentPage.ToolbarItems>
         <ToolbarItem 
-            IconImageSource="add_icon.svg"
+            IconImageSource="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}"
             Clicked="AddNoteToolbarItem_Clicked"/>
         
         <ToolbarItem 
-            IconImageSource="save_icon.svg"
+            IconImageSource="{AppThemeBinding Light=save_icon.svg, Dark=save_icon_white.svg}"
             Clicked="SaveNotesToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
     <!--#endregion-->
@@ -42,8 +41,8 @@
 
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Border StrokeShape="RoundRectangle 20" Padding="10" StrokeThickness="0">
-                    <Grid BackgroundColor="White">
+                <Border>
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
@@ -56,33 +55,33 @@
                         </Grid.ColumnDefinitions>
 
                         <Entry 
-                        Text="{Binding Title}"
-                        Placeholder="{x:Static resx:StringsResource.NoteTitleEntry_Placeholder}"
-                        FontSize="Title"  
-                        Grid.Row="0"
-                        Grid.Column="0"/>
+                            Text="{Binding Title}"
+                            Placeholder="{x:Static resx:StringsResource.NoteTitleEntry_Placeholder}"
+                            FontSize="Title"
+                            Grid.Row="0"
+                            Grid.Column="0"/>
 
                         <ImageButton
-                        Source="delete_can_icon.svg"                               
-                        HeightRequest="20"
-                        WidthRequest="20"
-                        Grid.Column="1"
-                        Clicked="DeleteNoteButton_Clicked"/>
+                            Source="{AppThemeBinding Light=delete_can_icon.svg, Dark=delete_can_icon_white.svg}"                               
+                            HeightRequest="20"
+                            WidthRequest="20"
+                            Grid.Column="1"
+                            Clicked="DeleteNoteButton_Clicked"/>
 
                         <Label 
-                        Text="{Binding Date}"
-                        FontSize="Small"
-                        TextColor="DimGray"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Margin="4,0,0,0"/>
+                            Text="{Binding Date}"
+                            FontSize="Small"
+                            TextColor="DimGray"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="4,0,0,0"/>
 
                         <Editor
-                        Text="{Binding Text}"
-                        Placeholder="{x:Static resx:StringsResource.NoteTextEditor_Placeholder}"
-                        FontSize="Medium"
-                        Grid.Row="2"
-                        AutoSize="TextChanges"/>
+                            Text="{Binding Text}"
+                            Placeholder="{x:Static resx:StringsResource.NoteTextEditor_Placeholder}"
+                            FontSize="Medium"
+                            Grid.Row="2"
+                            AutoSize="TextChanges"/>
                     </Grid>
                 </Border>
                 
