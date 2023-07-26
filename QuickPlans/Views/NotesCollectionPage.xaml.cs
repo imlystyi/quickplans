@@ -1,6 +1,7 @@
 #region Usings
 
 using QuickPlans.Models;
+using QuickPlans.ViewModels;
 
 #endregion
 
@@ -8,9 +9,21 @@ namespace QuickPlans.Views;
 
 public partial class NotesCollectionPage : ContentPage
 {
-    #region Page constructors
+    #region Contsructors
 
     public NotesCollectionPage() => InitializeComponent();
+
+    #endregion
+
+    #region Methods
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+
+        NotesCollection notesCollection = (NotesCollection)NotesCollectionView.BindingContext;
+        notesCollection.WriteAll();
+    }
 
     #endregion
 
@@ -46,17 +59,5 @@ public partial class NotesCollectionPage : ContentPage
         notesCollection.RemoveNote(note);
     }
 
-    #endregion
-
-    #region Overridden methods
-
-    protected override void OnDisappearing()
-    {
-        base.OnDisappearing();
-
-        NotesCollection notesCollection = (NotesCollection)NotesCollectionView.BindingContext;
-        notesCollection.WriteAll();
-    }
-
-    #endregion
+    #endregion    
 }

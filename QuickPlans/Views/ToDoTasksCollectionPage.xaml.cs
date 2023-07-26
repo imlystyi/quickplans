@@ -1,6 +1,7 @@
 #region Usings
 
 using QuickPlans.Models;
+using QuickPlans.ViewModels;
 
 #endregion
 

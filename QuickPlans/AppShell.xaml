@@ -9,7 +9,7 @@
     FlyoutBehavior="Disabled"
     BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource Black}}"
     Shell.TitleColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-    
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}"
     x:DataType="ContentPage">
 
     <Shell.Behaviors>
@@ -17,14 +17,12 @@
                                StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
     </Shell.Behaviors>
 
-
     <TabBar>
-        <ShellContent 
+        <ShellContent
             Title="{x:Static resx:StringsResource.NotesShellContent_Text}"
             ContentTemplate="{DataTemplate views:NotesCollectionPage}"
             Route="NotesCollectionPage"
             Icon="notes_icon.svg"/>
-
         <ShellContent 
             Title="{x:Static resx:StringsResource.ToDoTasksShellContent_Text}"
             ContentTemplate="{DataTemplate views:ToDoTasksCollectionPage}"

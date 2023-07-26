@@ -2,40 +2,28 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:s="clr-namespace:QuickPlans.Services"
-    xmlns:models="clr-namespace:QuickPlans.Models"
-    xmlns:resx="clr-namespace:QuickPlans.Resources.Strings"
-    
+    xmlns:viewmodels="clr-namespace:QuickPlans.ViewModels"
+    xmlns:resx="clr-namespace:QuickPlans.Resources.Strings"    
     x:Class="QuickPlans.Views.ToDoTasksCollectionPage"    
-
     Title="{x:Static resx:StringsResource.ToDoTasksCollectionPage_Title}">
 
-    <!--#region Page BindingContext-->
     <ContentPage.BindingContext>
-        <models:ToDoTasksCollection/>
+        <viewmodels:ToDoTasksCollection/>
     </ContentPage.BindingContext>
-    <!--#endregion-->
-    
-    <!--#region ToolbarItems-->
+
     <ContentPage.ToolbarItems>
         <ToolbarItem
-            IconImageSource="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}"
-            Clicked="AddToDoTaskToolbarItem_Clicked"/>
-
+            IconImageSource="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}" Clicked="AddToDoTaskToolbarItem_Clicked"/>
         <ToolbarItem
-            IconImageSource="{AppThemeBinding Light=save_icon.svg, Dark=save_icon_white.svg}"
-            Clicked="SaveToDoTasksToolbarItem_Clicked"/>
+            IconImageSource="{AppThemeBinding Light=save_icon.svg, Dark=save_icon_white.svg}" Clicked="SaveToDoTasksToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    <!--#endregion-->
-    
-    <!--#region ToDoTasks CollectionView-->
     <CollectionView 
         x:Name="ToDoTasksCollectionView"
-        ItemsSource="{Binding ToDoTasks}"
+        ItemsSource="{Binding Container}"
         SelectionMode="None"        
         ItemSizingStrategy="MeasureAllItems"
         Margin="20">
-        
+
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
         </CollectionView.ItemsLayout>
@@ -77,7 +65,6 @@
                             Grid.Column="0"
                             Margin="4,0,0,0"/>
 
-                        <!--#region Subtasks CollectionView-->
                         <CollectionView ItemsSource="{Binding Subtasks}" Grid.Row="2">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -129,11 +116,9 @@
                                 </Grid>
                             </CollectionView.Footer>
                         </CollectionView>
-                        <!--#endregion-->
                     </Grid>
                 </Border>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
-    <!--#endregion-->
 </ContentPage>
