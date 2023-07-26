@@ -4,6 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <!--#region Preinstalled styles -->
+    
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
@@ -405,4 +407,31 @@
         <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray950}}" />
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
+    
+    <!--#endregion-->
+    
+    <!--#region Own styles -->
+
+    <Style x:Key="CircleButton" TargetType="ImageButton">
+        <Setter Property="Background" Value="{AppThemeBinding Light=White, Dark={StaticResource Gray950}}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="WidthRequest" Value="30"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Margin" Value="15,0,0,0"/>
+    </Style>
+
+    <Style x:Key="DataLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="TextColor" Value="DimGray"/>
+        <Setter Property="Margin" Value="4,0,0,0"/>
+    </Style>
+
+    <Style x:Key="QuickCollectionView" TargetType="CollectionView">
+        <Setter Property="SelectionMode" Value="None"/>
+        <Setter Property="ItemSizingStrategy" Value="MeasureAllItems"/>
+        <Setter Property="Margin" Value="20"/>
+    </Style>
+    
+    <!--#endregion-->
 </ResourceDictionary>

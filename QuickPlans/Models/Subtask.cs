@@ -66,15 +66,12 @@ internal class Subtask : IPlan
 
     #endregion
 
-    #region Overridden methods
-
-    public override bool Equals(object? obj) => Equals(obj as Subtask);
+    #region Methods
 
     public bool Equals(Subtask? subtaskToCompare)
     {
         if (subtaskToCompare is null)
             return false;
-
         else
             return Id == subtaskToCompare.Id;
     }
@@ -82,6 +79,8 @@ internal class Subtask : IPlan
     public static bool operator ==(Subtask lToDoPoint, Subtask rToDoPoint) => lToDoPoint.Equals(rToDoPoint);
 
     public static bool operator !=(Subtask lToDoPoint, Subtask rToDoPoint) => !(lToDoPoint == rToDoPoint);
+
+    public override bool Equals(object? obj) => Equals(obj as Subtask);
 
     public override int GetHashCode() => Id.GetHashCode();
 

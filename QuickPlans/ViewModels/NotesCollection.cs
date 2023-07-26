@@ -45,7 +45,7 @@ internal class NotesCollection : QuickCollection<Note>
         List<Note>? notes = JsonConvert.DeserializeObject<List<Note>>(notesJsonString);
 
         if (notes is null)
-            Debug.WriteLine($"Handled exception in the {nameof(ReadAll)}: deserialized {nameof(notes)} is null!", "Handled exception");        
+            Debug.WriteLine($"Handled exception in the {nameof(ReadAll)}: deserialized {nameof(notes)} is null!", "Handled exception");
         else
         {
             Container.Clear();
@@ -60,5 +60,14 @@ internal class NotesCollection : QuickCollection<Note>
         Task writeAsync = AsyncIO.Write(StoragePath, notesJsonString);
         await writeAsync.ConfigureAwait(false);
     }
+
+    public override void WriteAll(int delay)
+    {
+        string notesJsonString = JsonConvert.SerializeObject(Container.ToList());
+
+        Task writeAsync = AsyncIO.Write(StoragePath, notesJsonString);
+        writeAsync.Wait(delay);
+    }
+
     #endregion
 }

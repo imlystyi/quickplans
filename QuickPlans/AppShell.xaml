@@ -6,27 +6,24 @@
     xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
     xmlns:views="clr-namespace:QuickPlans.Views"    
     xmlns:resx="clr-namespace:QuickPlans.Resources.Strings"
-    FlyoutBehavior="Disabled"
     BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource Black}}"
     Shell.TitleColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
     Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}"
-    x:DataType="ContentPage">
+    FlyoutBehavior="Disabled">
 
     <Shell.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource Black}}"
+        <mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}"
                                StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
     </Shell.Behaviors>
 
     <TabBar>
-        <ShellContent
-            Title="{x:Static resx:StringsResource.NotesShellContent_Text}"
-            ContentTemplate="{DataTemplate views:NotesCollectionPage}"
-            Route="NotesCollectionPage"
-            Icon="notes_icon.svg"/>
-        <ShellContent 
-            Title="{x:Static resx:StringsResource.ToDoTasksShellContent_Text}"
-            ContentTemplate="{DataTemplate views:ToDoTasksCollectionPage}"
-            Route="ToDoTasksCollectionPage"
-            Icon="to_do_tasks_icon.svg"/>
+        <ShellContent Title="{x:Static resx:StringsResource.NotesShellContent_Text}"
+                      ContentTemplate="{DataTemplate views:NotesCollectionPage}"
+                      Route="NotesCollectionPage"
+                      Icon="notes_icon.svg"/>
+        <ShellContent Title="{x:Static resx:StringsResource.ToDoTasksShellContent_Text}"
+                      ContentTemplate="{DataTemplate views:ToDoTasksCollectionPage}"
+                      Route="ToDoTasksCollectionPage"
+                      Icon="to_do_tasks_icon.svg"/>
     </TabBar>
 </Shell>

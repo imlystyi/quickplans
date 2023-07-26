@@ -8,7 +8,7 @@ namespace QuickPlans.Models;
 internal static class AsyncIO
 {
     /// <summary>
-    /// Asynchronously writes the given text to a file with the given path. 
+    /// Asynchronously writes the given text to a file with the given path.
     /// </summary>
     /// <param name="path">The file path.</param>
     /// <param name="text">The text to write.</param>

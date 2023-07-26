@@ -7,17 +7,54 @@ using QuickPlans.ViewModels;
 
 namespace QuickPlans.Views;
 
+/// <summary>
+/// Page that shows a collection of user to-do-tasks.
+/// </summary>
 public partial class ToDoTasksCollectionPage : ContentPage
 {
-    #region Page constructors
+    #region Constructors
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ToDoTasksCollectionPage"/> class.
+    /// </summary>
     public ToDoTasksCollectionPage() => InitializeComponent();
 
     #endregion
 
-    #region Toolbar event handlers
+    #region Methods
 
-    public void AddToDoTaskToolbarItem_Clicked(object sender, EventArgs args)
+    /// <summary>
+    /// Invokes when page disappears.
+    /// </summary>
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+
+        ToDoTasksCollection toDoTaskCollection = (ToDoTasksCollection)ToDoTasksCollectionView.BindingContext;
+
+        try
+        {
+            toDoTaskCollection.WriteAll();
+        }
+        catch (IOException)
+        {
+            toDoTaskCollection.WriteAll(ToDoTasksCollection.DELAY);
+        }
+    }
+
+    #endregion
+
+    #region Event handlers
+
+    private void AddSubtaskButton_Clicked(object sender, EventArgs e)
+    {
+        ImageButton button = (ImageButton)sender;
+        ToDoTask toDoTask = (ToDoTask)button.BindingContext;
+
+        toDoTask.AddSubtask(new Subtask(string.Empty, false, DateTime.Now.ToString("yyyyMMddHHmmssfffffffK")));
+    }
+
+    public void AddToDoTask_Clicked(object sender, EventArgs args)
     {
         ToDoTask toDoTask = new();
 
@@ -25,15 +62,55 @@ public partial class ToDoTasksCollectionPage : ContentPage
         toDoTaskCollection.AddToDoTask(toDoTask);
     }
 
-    private void SaveToDoTasksToolbarItem_Clicked(object sender, EventArgs args)
+    private void DeleteSubtaskButton_Clicked(object sender, EventArgs e)
     {
-        ToDoTasksCollection toDoTaskCollection = (ToDoTasksCollection)ToDoTasksCollectionView.BindingContext;
-        toDoTaskCollection.WriteAll();
+        ImageButton button = (ImageButton)sender;
+
+        CollectionView collectionView = (CollectionView)button.Parent.Parent;
+
+        ToDoTask toDoTask = (ToDoTask)collectionView.BindingContext;
+        Subtask subtask = (Subtask)button.BindingContext;
+
+        toDoTask.RemoveSubtask(subtask);
     }
 
-    #endregion
+    private void DeleteTaskButton_Clicked(object sender, EventArgs e)
+    {
+        ImageButton button = (ImageButton)sender;
 
-    #region Entries/editors event handlers
+        CollectionView collectionView = (CollectionView)button.Parent.Parent.Parent;
+
+        ToDoTasksCollection collection = (ToDoTasksCollection)collectionView.BindingContext;
+        ToDoTask toDoTask = (ToDoTask)button.BindingContext;
+
+        collection.RemoveToDoTask(toDoTask);
+    }
+
+    private void DeleteToDoTaskButton_Clicked(object sender, EventArgs args)
+    {
+        ImageButton button = (ImageButton)sender;
+
+        CollectionView collectionView = (CollectionView)button.Parent.Parent.Parent;
+
+        ToDoTasksCollection toDoTasksCollection = (ToDoTasksCollection)collectionView.BindingContext;
+        ToDoTask toDoTask = (ToDoTask)button.BindingContext;
+
+        toDoTasksCollection.RemoveToDoTask(toDoTask);
+    }
+
+    private void SaveToDoTasks_Clicked(object sender, EventArgs args)
+    {
+        ToDoTasksCollection toDoTaskCollection = (ToDoTasksCollection)ToDoTasksCollectionView.BindingContext;
+
+        try
+        {
+            toDoTaskCollection.WriteAll();
+        }
+        catch (IOException)
+        {
+            toDoTaskCollection.WriteAll(ToDoTasksCollection.DELAY);
+        }
+    }
 
     private void SubtaskTextEntry_Focused(object sender, FocusEventArgs args)
     {
@@ -53,60 +130,6 @@ public partial class ToDoTasksCollectionPage : ContentPage
 
         ImageButton button = (ImageButton)grid.FindByName("DeleteSubtaskButton");
         (button.IsEnabled, button.IsVisible) = (false, false);
-    }
-
-    public void NewSubtaskEntry_Completed(object sender, EventArgs args)
-    {
-        Entry entry = (Entry)sender;
-
-        CollectionView collectionView = (CollectionView)entry.Parent.Parent;
-
-        ToDoTask toDoTask = (ToDoTask)collectionView.BindingContext;
-
-        toDoTask.AddSubtask(new Subtask(entry.Text, false, DateTime.Now.ToString("yyyyMMddHHmmssfffffffK")));
-
-        entry.Text = string.Empty;
-        entry.Unfocus();       
-    }
-
-    #endregion
-
-    #region Buttons event handlers
-
-    private void DeleteToDoTaskButton_Clicked(object sender, EventArgs args)
-    {
-        ImageButton button = (ImageButton)sender;
-
-        CollectionView collectionView = (CollectionView)button.Parent.Parent.Parent;
-
-        ToDoTasksCollection toDoTasksCollection = (ToDoTasksCollection)collectionView.BindingContext;
-        ToDoTask toDoTask = (ToDoTask)button.BindingContext;
-
-        toDoTasksCollection.RemoveToDoTask(toDoTask);
-    }
-
-    private void DeleteSubtaskButton_Clicked(object sender, EventArgs e)
-    {
-        ImageButton button = (ImageButton)sender;
-
-        CollectionView collectionView = (CollectionView)button.Parent.Parent;
-
-        ToDoTask toDoTask = (ToDoTask)collectionView.BindingContext;
-        Subtask subtask = (Subtask)button.BindingContext;
-
-        toDoTask.RemoveSubtask(subtask);
-    }
-
-    #endregion
-
-    #region Overridden methods
-
-    protected override void OnDisappearing()
-    {
-        base.OnDisappearing();
-
-        ToDoTasksCollection toDoTaskCollection = (ToDoTasksCollection)ToDoTasksCollectionView.BindingContext;
-        toDoTaskCollection.WriteAll();
     }
 
     #endregion

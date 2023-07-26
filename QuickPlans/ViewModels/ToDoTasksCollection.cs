@@ -62,5 +62,13 @@ internal class ToDoTasksCollection : QuickCollection<ToDoTask>
         await writeAsync.ConfigureAwait(false);
     }
 
+    public override void WriteAll(int delay)
+    {
+        string toDoTasksJsonString = JsonConvert.SerializeObject(Container.ToList());
+
+        Task writeAsync = AsyncIO.Write(StoragePath, toDoTasksJsonString);
+        writeAsync.Wait(delay);
+    }
+
     #endregion
 }

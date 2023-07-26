@@ -12,45 +12,36 @@
     </ContentPage.BindingContext>
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}" Clicked="AddNoteToolbarItem_Clicked"/>
-        <ToolbarItem IconImageSource="{AppThemeBinding Light=save_icon.svg, Dark=save_icon_white.svg}" Clicked="SaveNotesToolbarItem_Clicked"/>
+        <ToolbarItem IconImageSource="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}" Clicked="AddNote_Clicked"/>
+        <ToolbarItem IconImageSource="{AppThemeBinding Light=save_icon.svg, Dark=save_icon_white.svg}" Clicked="SaveNotes_Clicked"/>
     </ContentPage.ToolbarItems>
     
-    <CollectionView x:Name="NotesCollectionView" 
-                    ItemsSource="{Binding Container}"
-                    SelectionMode="None"
-                    ItemSizingStrategy="MeasureAllItems"
-                    Margin="20">
+    <CollectionView x:Name="NotesCollectionView" Style="{StaticResource QuickCollectionView}" ItemsSource="{Binding Container}">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
         </CollectionView.ItemsLayout>        
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Border>
-                    <Grid RowDefinitions="Auto,Auto,*" ColumnDefinitions="*,Auto">
-                        <Entry Text="{Binding Title}"
-                               Placeholder="{x:Static resx:StringsResource.NoteTitleEntry_Placeholder}"
-                           FontSize="Title"
-                           Grid.Row="0"
-                           Grid.Column="0"/>
-                        <ImageButton Source="{AppThemeBinding Light=delete_can_icon.svg, Dark=delete_can_icon_white.svg}"                               
-                                     WidthRequest="20"
-                                     HeightRequest="20"                                     
-                                     Grid.Column="1"
-                                     Clicked="DeleteNoteButton_Clicked"/>
-                        <Label Text="{Binding Date}"
-                               FontSize="Small"
-                               TextColor="DimGray"
-                               Grid.Row="1"
-                               Grid.Column="0"
-                               Margin="4,0,0,0"/>
-                        <Editor Text="{Binding Text}"
-                                Placeholder="{x:Static resx:StringsResource.NoteTextEditor_Placeholder}"
-                                FontSize="Medium"
-                                Grid.Row="2"
-                                AutoSize="TextChanges"/>
-                    </Grid>
-                </Border>
+                <Grid RowSpacing="5" RowDefinitions="Auto,Auto">
+                    <ImageButton Style="{StaticResource CircleButton}"
+                                 Source="{AppThemeBinding Light=delete_can_icon.svg, Dark=delete_can_icon_white.svg}"
+                                 Grid.Row="0"
+                                 Clicked="DeleteNoteButton_Clicked"/>
+                    <Border Grid.Row="1">
+                        <Grid RowDefinitions="Auto,Auto,*">
+                            <Entry Text="{Binding Title}" 
+                                   Placeholder="{x:Static resx:StringsResource.NoteTitleEntry_Placeholder}"
+                                   FontSize="Title"
+                                   Grid.Row="0"/>
+                            <Label Style="{StaticResource DataLabel}" Text="{Binding Date}" Grid.Row="1"/>
+                            <Editor Text="{Binding Text}"
+                                    Placeholder="{x:Static resx:StringsResource.NoteTextEditor_Placeholder}"
+                                    FontSize="Medium"
+                                    AutoSize="TextChanges"
+                                    Grid.Row="2"/>
+                        </Grid>
+                    </Border>
+                </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

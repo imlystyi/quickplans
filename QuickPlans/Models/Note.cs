@@ -30,7 +30,7 @@ internal class Note : IPlan
     /// Gets or sets the note creation date.
     /// </summary>
     /// <remarks>
-    /// The date is plain text and can be any string. 
+    /// The date is plain text and can be any string.
     /// <br>
     /// <example>
     /// But the preferred format is general short date/time. Example:
@@ -78,7 +78,7 @@ internal class Note : IPlan
 
     #endregion
 
-    #region Overridden methods
+    #region Methods
 
     public override bool Equals(object? obj) => Equals(obj as Note);
 
@@ -86,7 +86,6 @@ internal class Note : IPlan
     {
         if (note is null)
             return false;
-
         else
             return Id == note.Id;
     }

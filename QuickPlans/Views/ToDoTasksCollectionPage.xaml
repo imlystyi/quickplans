@@ -12,80 +12,50 @@
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem
-            IconImageSource="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}" Clicked="AddToDoTaskToolbarItem_Clicked"/>
-        <ToolbarItem
-            IconImageSource="{AppThemeBinding Light=save_icon.svg, Dark=save_icon_white.svg}" Clicked="SaveToDoTasksToolbarItem_Clicked"/>
+        <ToolbarItem IconImageSource="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}" Clicked="AddToDoTask_Clicked"/>
+        <ToolbarItem IconImageSource="{AppThemeBinding Light=save_icon.svg, Dark=save_icon_white.svg}" Clicked="SaveToDoTasks_Clicked"/>
     </ContentPage.ToolbarItems>
-    <CollectionView 
-        x:Name="ToDoTasksCollectionView"
-        ItemsSource="{Binding Container}"
-        SelectionMode="None"        
-        ItemSizingStrategy="MeasureAllItems"
-        Margin="20">
-
+    <CollectionView x:Name="ToDoTasksCollectionView" Style="{StaticResource QuickCollectionView}" ItemsSource="{Binding Container}">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
         </CollectionView.ItemsLayout>
-
         <CollectionView.ItemTemplate>
             <DataTemplate>
-                <Border>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Entry 
-                            Text="{Binding Title}" 
-                            Placeholder="{x:Static resx:StringsResource.ToDoTaskTitleEntry_Placeholder}"
-                            FontSize="Title"  
-                            Grid.Row="0"
-                            Grid.Column="0"/>
-
-                        <ImageButton 
-                            Source="{AppThemeBinding Light=delete_can_icon.svg, Dark=delete_can_icon_white.svg}"
-                            HeightRequest="20"
-                            WidthRequest="20"
-                            Grid.Column="1"
-                            Clicked="DeleteToDoTaskButton_Clicked"/>
-
-                        <Label 
-                            Text="{Binding Date}"
-                            FontSize="Small"
-                            TextColor="DimGray"
-                            Grid.Row="1"
-                            Grid.Column="0"
-                            Margin="4,0,0,0"/>
-
-                        <CollectionView ItemsSource="{Binding Subtasks}" Grid.Row="2">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <CheckBox Grid.Column="0" IsChecked="{Binding Done}"/>
-
-                                        <Entry 
-                                            Text="{Binding Text}"
-                                            Placeholder="{x:Static resx:StringsResource.SubtaskTextEntry_Placeholder}"
-                                            FontSize="Medium"
-                                            Grid.Column="1"
-                                            Focused="SubtaskTextEntry_Focused"
-                                            Unfocused="SubtaskTextEntry_Unfocused"/>
-
-                                        <ImageButton 
+                <Grid RowSpacing="5" RowDefinitions="Auto,Auto">
+                    <Grid ColumnSpacing="30" ColumnDefinitions="Auto,Auto" Grid.Row="0">
+                        <ImageButton Style="{StaticResource CircleButton}"
+                                     Source="{AppThemeBinding Light=delete_can_icon.svg, Dark=delete_can_icon_white.svg}"
+                                     Grid.Column="0"
+                                     Clicked="DeleteTaskButton_Clicked"/>
+                        <ImageButton Style="{StaticResource CircleButton}"
+                                     Source="{AppThemeBinding Light=add_icon.svg, Dark=add_icon_white.svg}"
+                                     Grid.Column="1"
+                                     Clicked="AddSubtaskButton_Clicked"/>
+                    </Grid>
+                    <Border Grid.Row="1">
+                        <Grid RowDefinitions="Auto,Auto,*">
+                            <Entry Text="{Binding Title}" 
+                               Placeholder="{x:Static resx:StringsResource.ToDoTaskTitleEntry_Placeholder}"
+                               FontSize="Title"  
+                               Grid.Row="0"/>
+                            <Label Style="{StaticResource DataLabel}" Text="{Binding Date}" Grid.Row="1"/>
+                            <CollectionView ItemsSource="{Binding Subtasks}" Grid.Row="2">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox Grid.Column="0" IsChecked="{Binding Done}"/>
+                                            <Entry Text="{Binding Text}"
+                                               Placeholder="{x:Static resx:StringsResource.SubtaskTextEntry_Placeholder}"
+                                               FontSize="Medium"
+                                               Grid.Column="1"
+                                               Focused="SubtaskTextEntry_Focused"
+                                               Unfocused="SubtaskTextEntry_Unfocused"/>
+                                            <ImageButton 
                                             x:Name="DeleteSubtaskButton"
                                             Source="{AppThemeBinding Light=delete_cross_icon.svg, Dark=delete_cross_icon_white.svg}"
                                             IsEnabled="False"
@@ -94,30 +64,13 @@
                                             WidthRequest="20"
                                             Grid.Column="2"
                                             Clicked="DeleteSubtaskButton_Clicked"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-
-                            <CollectionView.Footer>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <CheckBox Grid.Column="0" IsEnabled="False"/>
-
-                                    <Entry
-                                        Placeholder="{x:Static resx:StringsResource.SubtaskTextEntry_Placeholder}"
-                                        Grid.Column="1"
-                                        FontSize="Medium"
-                                        Completed="NewSubtaskEntry_Completed"/>
-                                </Grid>
-                            </CollectionView.Footer>
-                        </CollectionView>
-                    </Grid>
-                </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Grid>
+                    </Border>
+                </Grid>                
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

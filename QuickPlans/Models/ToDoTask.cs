@@ -35,7 +35,7 @@ internal class ToDoTask : IPlan
     /// Gets or sets the to-do-task creation date.
     /// </summary>
     /// <remarks>
-    /// The date is plain text and can be any string. 
+    /// The date is plain text and can be any string.
     /// <br>
     /// <example>
     /// But the preferred format is general short date/time. Example:
