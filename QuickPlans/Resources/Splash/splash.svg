@@ -1,7 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="3.133 -62.03 506.892 644.11" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
-  <defs>
-    <style bx:fonts="DM Mono">@import url(https://fonts.googleapis.com/css2?family=DM+Mono%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C500%3B1%2C300%3B1%2C400%3B1%2C500&amp;display=swap);</style>
-  </defs>
-  <text style="font-family: &quot;DM Mono&quot;; font-size: 339.8px; font-weight: 700; paint-order: fill markers; stroke-miterlimit: 50; stroke-opacity: 0; stroke-width: 0px; white-space: pre;" x="53.317" y="356.94" dx="0 -1.253">qp</text>
-</svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="3.133 -62.03 506.892 644.11"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="qp_logo.svg"
+   xml:space="preserve"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:bx="https://boxy-svg.com"><sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.88263474"
+     inkscape:cx="243.58887"
+     inkscape:cy="221.49593"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" /><defs
+     id="defs4"><style
+       bx:fonts="DM Mono"
+       id="style2">@import url(https://fonts.googleapis.com/css2?family=DM+Mono%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C500%3B1%2C300%3B1%2C400%3B1%2C500&amp;display=swap);</style></defs><path
+     d="M 61.102754,499.94276 H 327.22826 V 361.09406 H 460.29101 V 83.396645 H 61.102754 Z m 0,41.65461 c -10.977678,0 -20.375232,-4.07868 -28.192661,-12.23605 -7.817441,-8.15736 -11.726162,-17.96355 -11.726162,-29.41856 V 83.396645 c 0,-11.455014 3.908721,-21.261201 11.726162,-29.418562 7.817429,-8.15736 17.214983,-12.23604 28.192661,-12.23604 H 460.29101 c 10.97768,0 20.37524,4.07868 28.19268,12.23604 7.81743,8.157361 11.72614,17.963548 11.72614,29.418562 V 374.97894 L 340.53454,541.59737 Z m 0,-41.65461 V 83.396645 Z"
+     id="path293"
+     style="stroke-width:0.679625"
+     sodipodi:nodetypes="cccccccsssssssssccsccc" /><circle
+     style="fill:#000000;stroke-width:1.975"
+     id="path717"
+     cx="153.47701"
+     cy="392.10403"
+     r="31.644707" /><path
+     d="m 377.41107,117.6014 38.25774,36.01014 -208.51126,217.24818 -38.25762,-36.01035 z"
+     style="stroke-width:0.855808"
+     id="path752" /></svg>
