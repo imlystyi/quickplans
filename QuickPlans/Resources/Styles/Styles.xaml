@@ -4,6 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <!-- Copyright 2023 imlystyi. Licensed under the Apache License, Version 2.0. See the attached text in .cs files. -->
+    
     <!--#region Preinstalled styles -->
     
     <Style TargetType="ActivityIndicator">
@@ -410,7 +412,7 @@
     
     <!--#endregion-->
     
-    <!--#region Own styles -->
+    <!--#region Defined styles -->
 
     <Style x:Key="CircleButton" TargetType="ImageButton">
         <Setter Property="Background" Value="{AppThemeBinding Light=White, Dark={StaticResource Gray950}}"/>

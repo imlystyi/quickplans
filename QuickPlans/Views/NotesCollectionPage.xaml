@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version = "1.0" encoding = "utf-8" ?>
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
@@ -6,6 +6,8 @@
     xmlns:resx="clr-namespace:QuickPlans.Resources.Strings"
     x:Class="QuickPlans.Views.NotesCollectionPage"
     Title="{x:Static resx:StringsResource.NotesCollectionPage_Title}">
+
+    <!-- Copyright 2023 imlystyi. Licensed under the Apache License, Version 2.0. See the attached text in NotesCollectionPage.xaml.cs -->
     
     <ContentPage.BindingContext>
         <viewmodels:NotesCollection/>

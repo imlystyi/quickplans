@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:QuickPlans"
              x:Class="QuickPlans.App">
+    
+    <!-- Copyright 2023 imlystyi. Licensed under the Apache License, Version 2.0. See the attached text in App.xaml.cs -->
+    
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

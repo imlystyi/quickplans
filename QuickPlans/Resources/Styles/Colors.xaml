@@ -3,6 +3,9 @@
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <!-- Copyright 2023 imlystyi. Licensed under the Apache License, Version 2.0. See the attached text in .cs files. -->
+    
     <Color x:Key="Primary">#1481ba</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>

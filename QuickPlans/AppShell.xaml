@@ -1,29 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell 
-    x:Class="QuickPlans.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-    xmlns:views="clr-namespace:QuickPlans.Views"    
-    xmlns:resx="clr-namespace:QuickPlans.Resources.Strings"
-    BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource Black}}"
-    Shell.TitleColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-    Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}"
-    FlyoutBehavior="Disabled">
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<Shell
+	x:Class="QuickPlans.AppShell"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+	xmlns:views="clr-namespace:QuickPlans.Views"    
+	xmlns:resx="clr-namespace:QuickPlans.Resources.Strings"
+	BackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource Black}}"
+	Shell.TitleColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+	Shell.TabBarBackgroundColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}"
+	FlyoutBehavior="Disabled">
 
-    <Shell.Behaviors>
-        <mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}"
-                               StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
-    </Shell.Behaviors>
+	<!-- Copyright 2023 imlystyi. Licensed under the Apache License, Version 2.0. See the attached text in AppShell.xaml.cs -->
+    
+	<Shell.Behaviors>
+		<mct:StatusBarBehavior StatusBarColor="{AppThemeBinding Light={StaticResource PageBackgroundLight}, Dark={StaticResource PageBackgroundDark}}"
+							   StatusBarStyle="{AppThemeBinding Light=DarkContent, Dark=LightContent}"/>
+	</Shell.Behaviors>
 
-    <TabBar>
-        <ShellContent Title="{x:Static resx:StringsResource.NotesShellContent_Text}"
-                      ContentTemplate="{DataTemplate views:NotesCollectionPage}"
-                      Route="NotesCollectionPage"
-                      Icon="notes_icon.svg"/>
-        <ShellContent Title="{x:Static resx:StringsResource.ToDoTasksShellContent_Text}"
-                      ContentTemplate="{DataTemplate views:ToDoTasksCollectionPage}"
-                      Route="ToDoTasksCollectionPage"
-                      Icon="to_do_tasks_icon.svg"/>
-    </TabBar>
+	<TabBar>
+		<ShellContent Title="{x:Static resx:StringsResource.NotesShellContent_Text}"
+					  ContentTemplate="{DataTemplate views:NotesCollectionPage}"
+					  Route="NotesCollectionPage"
+					  Icon="notes_icon.svg"/>
+		<ShellContent Title="{x:Static resx:StringsResource.ToDoTasksShellContent_Text}"
+					  ContentTemplate="{DataTemplate views:ToDoTasksCollectionPage}"
+					  Route="ToDoTasksCollectionPage"
+					  Icon="to_do_tasks_icon.svg"/>
+	</TabBar>
 </Shell>

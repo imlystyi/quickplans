@@ -7,6 +7,8 @@
     x:Class="QuickPlans.Views.ToDoTasksCollectionPage"    
     Title="{x:Static resx:StringsResource.ToDoTasksCollectionPage_Title}">
 
+    <!-- Copyright 2023 imlystyi. Licensed under the Apache License, Version 2.0. See the attached text in ToDoTasksCollectionPage.xaml.cs -->
+    
     <ContentPage.BindingContext>
         <viewmodels:ToDoTasksCollection/>
     </ContentPage.BindingContext>
